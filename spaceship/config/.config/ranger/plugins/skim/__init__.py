@@ -31,13 +31,12 @@ class sk_cd(Command):
         directory = stdout.decode('utf-8').rstrip('\n')
         self.fm.cd(directory)
 
-# https://github.com/ranger/ranger/wiki/Integrating-File-Search-with-sk
 # Now, simply bind this function to a key, by adding this to your ~/.config/ranger/rc.conf: map <C-f> sk_select
 class sk_select(Command):
     """
     :sk_select
 
-    Find a file using sk.
+    Find a file using sk and fd.
 
     With a prefix argument select only directories.
     """
@@ -49,6 +48,26 @@ class sk_select(Command):
         else:
             # match files and directories
             command="fd -L | sed 1d | cut -b3- | sk"
+        sk = self.fm.execute_command(command, stdout=subprocess.PIPE)
+        stdout, stderr = sk.communicate()
+        if sk.returncode == 0:
+            sk_file = os.path.abspath(stdout.decode('utf-8').rstrip('\n'))
+            if os.path.isdir(sk_file):
+                self.fm.cd(sk_file)
+            else:
+                self.fm.select_file(sk_file)
+
+
+# Now, simply bind this function to a key, by adding this to your ~/.config/ranger/rc.conf: map <C-g> sk_search
+class sk_search(Command):
+    """
+    :sk_search
+
+    Find a file using sk and rg.
+    """
+    def execute(self):
+        import subprocess
+        command="rg . | sk --delimiter=: --nth=2.."
         sk = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = sk.communicate()
         if sk.returncode == 0:

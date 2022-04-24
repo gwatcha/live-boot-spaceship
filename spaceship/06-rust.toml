@@ -4,5 +4,5 @@ set -eux
 
 rustup default nightly
 cargo install --git https://github.com/mfs/rust-df.git
-cargo install du-dust hyperfine tokei skim starship dog tealdeer so ripgrep grex zoxide rmesg fd-find xcp
+cargo install du-dust hyperfine tokei skim starship dog tealdeer so ripgrep grex zoxide rmesg fd-find xcp pier
 """
