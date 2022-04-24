@@ -9,7 +9,6 @@ packages = [
     "pamac-flatpak-plugin",
     "mpv",
 ]
-
 script = """
 set -eux
 

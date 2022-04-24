@@ -1,4 +1,6 @@
 script = """
+set -eux
+
 cp -r /shared_dirs/config/* /home/${ALMA_USER}
 """
 shared_directories = ["config"]

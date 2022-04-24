@@ -1,0 +1,9 @@
+packages = ["rustup"]
+script = """
+set -eux
+
+rustup default nightly
+cargo install --git https://github.com/mfs/rust-df.git
+cargo install --git https://github.com/Frezyy123/pdf-merger.git
+cargo install du-dust hyperfine tokei skim starship dog tealdeer so ripgrep grex zoxide rmesg fd-find xcp
+"""

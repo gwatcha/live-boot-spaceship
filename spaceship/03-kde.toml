@@ -1,7 +1,7 @@
-packages = ["plasma", "kio-extras", "kdebase", "plasma-nm", "plasma-pa"]
-
+packages = ["plasma-desktop", "plasma-wayland-session", "egl-wayland", "kde-applications-meta", "plasma-nm", "plasma-pa"]
 script = """
 set -eux
 
 systemctl enable sddm
+sysctl nvidia-drm.modeset=1
 """

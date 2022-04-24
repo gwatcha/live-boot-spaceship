@@ -1,6 +1,14 @@
-packages = ["yay"]
-
-script = """
-su ${ALMA_USER}
-sudo yay -S vim emacs ranger zsh zplug xcp bulk-git bat fzf dust kitty btop inxi tmux starship qjackctl
-"""
+packages = [
+    "yay",
+    "pcre2",
+    "fzf",
+    "kitty",
+    "btop",
+    "exa",
+    "sad",
+    "inxi",
+    "tmux",
+    "qjackctl",
+    "noto-fonts-emoji",
+    "julia",
+]
