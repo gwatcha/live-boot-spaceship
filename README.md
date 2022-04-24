@@ -6,7 +6,7 @@ See [Alma](https://github.com/philmmanjaro/alma)
 
 Create `.img`
 ```sh
-sudo ALMA_USER="mini" ALMA_PASS="   " alma create --presets spaceship --image 14Gib spaceship.img
+sudo ALMA_USER="mini" alma create --presets spaceship --image 14Gib spaceship.img
 ```
 
 Then, in a console...
