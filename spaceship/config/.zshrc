@@ -117,6 +117,7 @@ alias ,='go run'
 alias gs='git status'
 alias gc='git commit'
 alias ga='git add'
+alias gp='git push'
 autoload -U compinit && compinit
 
 # skim
