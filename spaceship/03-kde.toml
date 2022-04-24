@@ -1,10 +1,7 @@
 packages = [
-    "plasma-desktop",
+    "plasma",
     "kio-extras",
-    "plasma-wayland-session",
     "egl-wayland",
-    "plasma-nm",
-    "plasma-pa",
 ]
 script = """
 set -eux
