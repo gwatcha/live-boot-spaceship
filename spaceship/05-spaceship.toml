@@ -1,0 +1,6 @@
+packages = ["yay"]
+
+script = """
+su ${ALMA_USER}
+sudo yay -S vim emacs ranger zsh zplug xcp bulk-git bat fzf dust kitty btop inxi tmux starship qjackctl
+"""
