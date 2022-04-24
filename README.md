@@ -13,16 +13,10 @@ Then, in a console...
 
 ```sh
 sudo losetup -f ./spaceship.img
-sudo alma qemu ${sudo losetup -j ./spaceship.img}
+sudo alma qemu $(sudo losetup -j ./spaceship.img | sd '(^[^:]*).*' '$1')
 ```
 
-To 'chroot' into the img.
-
-Then, perform the manual setup by logging in and running
-
-```sh
-yay -S zplug xcp bulk-git 
-```
+To 'chroot' into the img to see if it worked.
 
 And to get firefox pretty, to copy the `chrome` folder from the $ALMA_USER folder to `${ALMA_USER}/.mozilla/firefox/(user profile)/`
 

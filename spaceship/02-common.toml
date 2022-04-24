@@ -9,10 +9,3 @@ packages = [
     "pamac-flatpak-plugin",
     "mpv",
 ]
-script = """
-set -eux
-
-systemctl enable apparmor
-systemctl enable snapd.apparmor
-systemctl enable snapd
-"""

@@ -94,6 +94,7 @@ alias ls='exa --icons'
 alias z='zoxide'
 alias dmesg='rmesg'
 alias ag='rg'
+alias grex='grex'
 
 alias be="bulk edit --editor 'emacsclient -c %{file}'"
 
