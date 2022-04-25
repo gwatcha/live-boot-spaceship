@@ -1,0 +1,29 @@
+# Optional Exports
+LUA_PATH='/home/michael/.luarocks/share/lua/5.3/?.lua;/home/michael/.luarocks/share/lua/5.3/?/init.lua;/usr/share/lua/5.3/?.lua;/usr/share/lua/5.3/?/init.lua;;./?.lua;/usr/lib/lua/5.3/?.lua;/usr/lib/lua/5.3/?/init.lua'
+LUA_PATH=$LUA_PATH:'/home/michael/.config'
+export LUA_PATH
+export MANPATH=:$MANPATH:/opt/texlive/2020/texmf-dist/doc/man
+export INFOPATH=:$MANPATH:/opt/texlive/2020/texmf-dist/doc/info
+export NODE_PATH=/usr/lib/node_modules:$HOME/.config/yarn/global/node_modules
+source /usr/share/nvm/init-nvm.sh
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+export JAVA_HOME=/usr/lib/jvm/default
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$JAVA_HOME/lib/:$JAVA_HOME/lib/i386/:$JAVA_HOME/lib/i386/xawt/:$JAVA_HOME/lib/i386/client/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$JAVA_HOME/lib/:$JAVA_HOME/lib/i386/:$JAVA_HOME/lib/i386/xawt/:$JAVA_HOME/lib/i386/client/
+export JL_PATH=$JL_PATH:/usr/include/julia
+export JULIA_EDITOR=vim
+export LOCAL_BIN=$HOME/Program/bin
+export RACK_DIR=$HOME/Program/Rack-SDK
+export GOPATH=$HOME/Program/go
+export GOBIN=$GOPATH/bin
+
+# Path
+PATH=$PATH:$HOME/.cargo/bin
+PATH=$PATH:$HOME/.yarn/bin
+PATH=$PATH:$GOPATH/bin
+PATH=$PATH:$HOME/Program/bin
+PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+PATH=$PATH:/opt/texlive/2020/bin/x86_64-linux
+PATH=$PATH:$HOME/Program/Rack2Free
+export PATH

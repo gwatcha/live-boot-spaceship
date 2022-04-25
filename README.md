@@ -2,25 +2,34 @@
 
 See [Alma](https://github.com/philmmanjaro/alma)
 
-## Usage
+This repository shows you how to make a storage device (usb, ssd..) into persistent live-boot device with a beautiful productive kde suite customized with love and firey intelligent optimization. It's a next generation computer interface. It is an ancient piece in a museum of Unix environments. It is ten times productive then standard setups and 13 times more awesome.
+
+## Install
+
+### Option 1 - Direct Install
+```sh
+sudo ALMA_USER="username" ALMA_PASS="password" alma create --presets spaceship /dev/<your disk>
+```
+
+### Option2 - Create .img
 
 Create `.img`
 ```sh
-sudo ALMA_USER="mini" alma create --presets spaceship --image 14Gib spaceship.img
+sudo ALMA_USER="username" ALMA_PASS="password" create --presets spaceship --image 14Gib spaceship.img
 ```
 
-Then, in a console...
+You will be able to see the progress. When it is done, you can test test it in a virtual environment:
 
 ```sh
 sudo losetup -f ./spaceship.img
 sudo alma qemu $(sudo losetup -j ./spaceship.img | sd '(^[^:]*).*' '$1')
 ```
 
-To 'chroot' into the img to see if it worked.
+## Manual Steps
 
-And to get firefox pretty, to copy the `chrome` folder from the $ALMA_USER folder to `${ALMA_USER}/.mozilla/firefox/(user profile)/`
+1. To get a spaceship vim-like omni-bar firefox copy the `chrome` folder from the `Dotfiles` folder to `${ALMA_USER}/.mozilla/firefox/(user profile)/`
+2. Set the background to the image in `Dotfiles`
 
-Your disk will then be a persistent live-boot device with a beautiful productive kde suite customized with love and firey intelligent optimization.
 
 Then, on tne parent machine, copy the working `spaceship.img` to a drive like an external usb or ssd using..
 
