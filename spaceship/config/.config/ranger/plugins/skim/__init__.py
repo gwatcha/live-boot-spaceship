@@ -23,8 +23,9 @@ from subprocess import PIPE
 
 class sk_cd(Command):
     def execute(self):
-        # command="fd -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune -o -type d -print 2> /dev/null | cut -b3- | sk"
-        command="fd -L . --type d | cut -b3- | sk"
+        command ="fd -L . --type d | cut -b3- | sk"
+        if self.fm.settings['show_hidden']:
+            command ="fd --hidden -L . --type d | cut -b3- | sk"
 
         sk = self.fm.execute_command(command, stdout=PIPE)
         stdout, stderr = sk.communicate()
@@ -37,17 +38,13 @@ class sk_select(Command):
     :sk_select
 
     Find a file using sk and fd.
-
-    With a prefix argument select only directories.
     """
     def execute(self):
         import subprocess
-        if self.quantifier:
-            # match only directories
-            command="fd -L --type d | sed 1d | cut -b3- | sk"
-        else:
-            # match files and directories
-            command="fd -L | sed 1d | cut -b3- | sk"
+        command ="fd -L . | sed 1d | cut -b3- | sk"
+        if self.fm.settings['show_hidden']:
+            command ="fd -L . --hidden | sed 1d | cut -b3- | sk"
+
         sk = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = sk.communicate()
         if sk.returncode == 0:
@@ -67,7 +64,10 @@ class sk_search(Command):
     """
     def execute(self):
         import subprocess
-        command="rg . | sk --delimiter=: --nth=2.."
+        command ="rg . | sk --delimiter=: --nth=2.."
+        if self.fm.settings['show_hidden']:
+            command ="rg . --hidden | sk --delimiter=: --nth=2.."
+
         sk = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = sk.communicate()
         if sk.returncode == 0:
