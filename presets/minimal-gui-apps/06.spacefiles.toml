@@ -1,6 +1,4 @@
 script = """
-set -eux
-
 rm -rf /home/${ALMA_USER}/.*
 cp -rT /shared_dirs/spacefiles/ /home/${ALMA_USER}
 """

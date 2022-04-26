@@ -5,6 +5,6 @@ packages = [
     "mpv",
     "vlc",
     "feh",
-    "dolpin",
+    "dolphin",
     "zathura",
 ]

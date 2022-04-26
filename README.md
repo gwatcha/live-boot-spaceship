@@ -1,6 +1,6 @@
 # Spaceship
 
-![](./spaceship.jpg)
+![](./pics/spaceship.jpg)
 
 Listen to me talk spaceship here: odysee.com/@kokopelli-interfaces:a/spaceship:6
 
