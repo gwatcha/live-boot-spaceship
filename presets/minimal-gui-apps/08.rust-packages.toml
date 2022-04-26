@@ -1,0 +1,7 @@
+script = """
+set -eux
+
+su - ${ALMA_USER} -c "cargo install --git https://github.com/mfs/rust-df.git"
+su - ${ALMA_USER} -c "cargo install du-dust hyperfine tokei skim starship tealdeer ripgrep grex zoxide rmesg xcp pier"
+"""
+environment_variables = ["ALMA_USER"]

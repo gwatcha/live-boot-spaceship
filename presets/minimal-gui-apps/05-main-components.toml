@@ -1,0 +1,16 @@
+packages = [
+    "yay",
+    "pcre2",
+    "fzf",
+    "kitty",
+    "btop",
+    "exa",
+    "sad",
+    "inxi",
+    "tmux",
+    "qjackctl",
+    "noto-fonts",
+    "noto-fonts-emoji",
+    "julia",
+    "ranger",
+]

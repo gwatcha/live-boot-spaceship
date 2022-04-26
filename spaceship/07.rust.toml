@@ -1,8 +1,0 @@
-packages = ["rustup"]
-script = """
-set -eux
-
-rustup default nightly
-cargo install --git https://github.com/mfs/rust-df.git
-cargo install du-dust hyperfine tokei skim starship tealdeer ripgrep grex zoxide rmesg xcp pier
-"""

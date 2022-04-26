@@ -1,0 +1,7 @@
+packages = ["rustup"]
+script = """
+set -eux
+
+su - ${ALMA_USER} -c "rustup default nightly"
+"""
+environment_variables = ["ALMA_USER"]

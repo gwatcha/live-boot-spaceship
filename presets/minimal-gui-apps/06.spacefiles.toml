@@ -1,0 +1,7 @@
+script = """
+set -eux
+
+cp -rT /shared_dirs/spacefiles/config /home/${ALMA_USER}
+cp -r /shared_dirs/spacefiles/info /home/${ALMA_USER}
+"""
+shared_directories = ["../../spacefiles"]

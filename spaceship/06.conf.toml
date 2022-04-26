@@ -1,6 +1,0 @@
-script = """
-set -eux
-
-cp -rT /shared_dirs/config /home/${ALMA_USER}
-"""
-shared_directories = ["config"]
