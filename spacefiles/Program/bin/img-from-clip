@@ -1,0 +1,2 @@
+#!/usr/bin/zsh
+xclip -se c -t image/png -o > $1

@@ -4,4 +4,7 @@ packages = [
     "firefox",
     "mpv",
     "vlc",
+    "feh",
+    "dolpin",
+    "zathura",
 ]
