@@ -76,15 +76,12 @@ This function should only modify configuration layer settings."
               python-lsp-server 'mspyls
               python-lsp-git-root "~/Program/python-language-server")
      ipython-notebook
-     ;; pandoc
      docker
      html
      vimscript
      emacs-lisp
      (c-c++ :variables c-c++-backend 'lsp-ccls)
-     ;; evil-snipe
      helm
-     ;; pdf
      speed-reading
      git
      markdown
@@ -392,7 +389,7 @@ It should only modify the values of Spacemacs settings."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-active-transparency 97
+   dotspacemacs-active-transparency 96
 
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
@@ -526,7 +523,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (add-to-list 'default-frame-alist
                '(vertical-scroll-bars . nil))
   ;; set zoom, scale, text size here
-  (set-face-attribute 'default nil :height 120)
+  (set-face-attribute 'default nil :height 140)
   (spacemacs/disable-transparency)
   )
 
@@ -571,9 +568,6 @@ before packages are loaded."
 
   (setq ccls-executable "/var/lib/snapd/snap/bin/ccls")
   (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
-  ;; (add-hook 'c++-mode-hook
-  ;;           (lambda () (setq flycheck-clang-include-path
-  ;;                            (list (expand-file-name "$HOME/Soft/forks/Rack/include")))))
 
   (require 'company)
   (eval-after-load "company"
@@ -605,14 +599,6 @@ before packages are loaded."
   (require 'ox-extra)
   (ox-extras-activate '(ignore-headlines))
 
-  ;;; tern
-  ;; (setenv "PATH" (concat (getenv "PATH")))
-  ;; (setq exec-path (append exec-path '("/home/michael/.yarn/bin")))
-
-  ;; (require 'tide)
-  ;; (setq tide-format-options '(:indentSize 2))
-
-
   (require 'magit)
   (define-key magit-status-mode-map (kbd "<down>") #'magit-section-forward)
   (define-key magit-status-mode-map (kbd "<up>") #'magit-section-backward)
@@ -629,27 +615,6 @@ before packages are loaded."
   (setq org-confirm-babel-evaluate nil)
 
   (require 'julia-mode)
-  ;; (require 'ob-julia)
-  ;; (defvar org-babel-default-header-args:julia '((:results . "output")))
-  ;; (add-to-linst 'org-babel-load-languages '(julia . t))
-
-  ;; (defun indent-org-block-automatically ()
-  ;;   (when (org-in-src-block-p)
-  ;;     (org-edit-special)
-  ;;     (indent-region (point-min) (point-max))
-  ;;     (org-edit-src-exit)))
-  ;; (run-at-time 1 10 'indent-org-block-automatically)
-  ;; (global-auto-complete-mode t) ;; auto complete enable in every buffer
-
-  ;; (require 'flycheck)
-  ;; (defun setup-flycheck-clang-project-path ()
-  ;;   (let ((root (ignore-errors (projectile-project-root))))
-  ;;     (when root
-  ;;       (add-to-list
-  ;;        (make-variable-buffer-local 'flycheck-clang-include-path)
-  ;;        (concat root "include")))))
-  ;; (add-hook 'c-mode-hook 'setup-flycheck-clang-project-path)
-  ;; (add-hook 'c++-mode-hook 'setup-flycheck-clang-project-path)
 
   (require 'sublimity-scroll)
   (setq sublimity-scroll-weight 10
@@ -664,7 +629,6 @@ before packages are loaded."
   (require 'evil-surround)
   (setq-default evil-surround-pairs-alist
                 (push '(?l . ("$$" . "$$")) evil-surround-pairs-alist))
-
 
   ;;;; ------------------------------------------------------------------------------------
 
@@ -707,10 +671,8 @@ before packages are loaded."
   (add-hook 'text-mode-hook 'olivetti-mode)
   (add-hook 'conf-mode-hook 'olivetti-mode)
   (add-hook 'magit-mode-hook 'olivetti-mode)
-  (setq-default olivetti-body-width 100)
 
-
-  (spacemacs/add-to-hooks 'spacemacs/disable-vi-tilde-fringe
+ (spacemacs/add-to-hooks 'spacemacs/disable-vi-tilde-fringe
                           '(olivetti-mode-hook))
 
   ;; (spacemacs/toggle-fringe-ff)
@@ -733,9 +695,6 @@ before packages are loaded."
       (alpha 80 . 100)))
  '(evil-want-Y-yank-to-eol nil)
  '(fill-column 100)
- '(flycheck-clang-include-path '("/home/michael/Soft/forks/Rack/include"))
- '(flycheck-clang-includes '("/home/michael/Soft/forks/Rack/include/rack.hpp"))
- '(flycheck-gcc-include-path '("/home/michael/Soft/forks/Rack/include"))
  '(linum-format " %3i ")
  '(lsp-julia-default-environment "~/.julia/environments/v1.4")
  '(org-agenda-files '("/home/michael/Org"))
@@ -833,15 +792,17 @@ This function is called at the very end of Spacemacs initialization."
  '(lsp-julia-default-environment "~/.julia/environments/v1.4")
  '(markdown-command "crowbook - -qs
 --to html --output -")
+ '(olivetti-body-width 0.8)
  '(org-agenda-files '("/home/michael/Org"))
  '(org-log-done 'time)
  '(package-selected-packages
-   '(org-plus-contrib rustic project xref paradox spinner mmm-mode evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-snipe evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state iedit evil-exchange evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree csv-mode company-auctex auctex adaptive-wrap kaolin-valley-dark-theme zenburn-theme zen-and-art-theme yapfify yaml-mode ws-butler writegood-mode winum white-sand-theme which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme toc-org tide tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit sunny-day-theme sublimity sublime-themes subatomic256-theme subatomic-theme spray spaceline spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle smartparens slim-mode shell-pop seti-theme scss-mode sass-mode reverse-theme restart-emacs rebecca-theme rainbow-delimiters railscasts-theme pyvenv pytest pyenv-mode py-isort purple-haze-theme pug-mode professional-theme popwin planet-theme pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el pandoc-mode ox-pandoc ox-extra outline-toc orgit organic-green-theme org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file omtose-phellack-theme omnisharp olivetti oldlace-theme occidental-theme obsidian-theme noctilux-theme neotree naquadah-theme mwim mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme markdown-toc majapahit-theme magit-gitflow madhat2r-theme macrostep lush-theme lua-mode lorem-ipsum livid-mode live-py-mode linum-relative link-hint light-soap-theme js2-refactor js-doc jbeans-theme jazz-theme ir-black-theme inkpot-theme indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio go-guru go-eldoc go-direx gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags gandalf-theme fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido flatui-theme flatland-theme fill-column-indicator farmhouse-theme fancy-battery eyebrowse expand-region exotica-theme exec-path-from-shell evil-unimpaired evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-escape eval-sexp-fu eterm-256color espresso-theme eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump dracula-theme dockerfile-mode docker django-theme disaster diminish diff-hl define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme dactyl-mode cython-mode cyberpunk-theme company-web company-tern company-statistics company-quickhelp company-go company-c-headers company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized coffee-mode cmake-mode clues-theme clean-aindent-mode clang-format cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme bind-map badwolf-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ace-window ace-link ace-jump-helm-line ac-ispell 0xc))
+   '(rustic project xref paradox spinner mmm-mode evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-snipe evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state iedit evil-exchange evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree csv-mode company-auctex auctex adaptive-wrap kaolin-valley-dark-theme zenburn-theme zen-and-art-theme yapfify yaml-mode ws-butler writegood-mode winum white-sand-theme which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme toc-org tide tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit sunny-day-theme sublimity sublime-themes subatomic256-theme subatomic-theme spray spaceline spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle smartparens slim-mode shell-pop seti-theme scss-mode sass-mode reverse-theme restart-emacs rebecca-theme rainbow-delimiters railscasts-theme pyvenv pytest pyenv-mode py-isort purple-haze-theme pug-mode professional-theme popwin planet-theme pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el pandoc-mode ox-pandoc ox-extra outline-toc orgit organic-green-theme org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file omtose-phellack-theme omnisharp olivetti oldlace-theme occidental-theme obsidian-theme noctilux-theme neotree naquadah-theme mwim mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme markdown-toc majapahit-theme magit-gitflow madhat2r-theme macrostep lush-theme lua-mode lorem-ipsum livid-mode live-py-mode linum-relative link-hint light-soap-theme js2-refactor js-doc jbeans-theme jazz-theme ir-black-theme inkpot-theme indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio go-guru go-eldoc go-direx gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags gandalf-theme fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido flatui-theme flatland-theme fill-column-indicator farmhouse-theme fancy-battery eyebrowse expand-region exotica-theme exec-path-from-shell evil-unimpaired evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-escape eval-sexp-fu eterm-256color espresso-theme eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump dracula-theme dockerfile-mode docker django-theme disaster diminish diff-hl define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme dactyl-mode cython-mode cyberpunk-theme company-web company-tern company-statistics company-quickhelp company-go company-c-headers company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized coffee-mode cmake-mode clues-theme clean-aindent-mode clang-format cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme bind-map badwolf-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ace-window ace-link ace-jump-helm-line ac-ispell 0xc))
  '(pdf-view-midnight-colors '("#d0d6dc" . "#262221"))
  '(pos-tip-background-color "#2E2A29")
  '(pos-tip-foreground-color "#d4d4d6")
  '(powerline-default-separator nil)
  '(rust-indent-offset 2)
+ '(scroll-bar-mode nil)
  '(spacemacs-yank-indent-threshold 0)
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
