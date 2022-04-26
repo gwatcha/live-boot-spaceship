@@ -15,20 +15,20 @@ The installation guide has been made for pacman unix systems.
 
 Using preset `more-gui-apps`...
 ```sh
-sudo ALMA_USER="your username" ALMA_PASS="your password" alma create --presets presets/spaceship/more-gui-apps /dev/<your disk>
+sudo ALMA_USER="your username" ALMA_PASS="your password" alma create --presets presets/more-gui-apps /dev/<your disk>
 ```
 
 And now using preset `minimal-gui-apps`... 
 > *I use this one, and it may not be for you depending on how muchh you want to invest into a powerful, human-emergent computer interface. It pushes one to use the console interface rather than relying on gui apps, which sets one on a path towards a star field of computer virtuosity - rather than a dead-end of point-and-click programs.* 
 ```sh
-sudo ALMA_USER="your username" ALMA_PASS="your password" alma create --presets presets/spaceship/minimal-gui-apps /dev/<your disk>
+sudo ALMA_USER="your username" ALMA_PASS="your password" alma create --presets presets/minimal-gui-apps /dev/<your disk>
 ```
 
 ### Option2 - Create .img, test, and burn
 
 Create `.img`. It is recommended the device size be above 10 Gib.
 ```sh
-sudo ALMA_USER="username" ALMA_PASS="password" create --presets spaceship --image <desired device size> spaceship.img
+sudo ALMA_USER="username" ALMA_PASS="password" create --presets presets/more-gui-apps --image <desired device size> spaceship.img
 ```
 
 You will be able to see the progress. When it is done, you can 'burn' it to a virtual device and test it with qemu:

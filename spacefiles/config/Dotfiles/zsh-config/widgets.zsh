@@ -14,8 +14,3 @@ run_ranger () {
     zle reset-prompt
 }
 zle -N run_ranger
-
-run_scan() {
-    sk --ansi -i -c 'rg --always-color ." {}"'
-}
-zle -N run_scan
